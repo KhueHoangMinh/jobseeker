@@ -10,6 +10,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import "./Both.css";
+import { Box, Button, Flex, Heading, Input, Select, Text, Image, Container } from "@chakra-ui/react";
 const Signup = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
@@ -132,269 +133,290 @@ const Signup = () => {
 
   return (
     <>
-      <session>
-        <div className="main">
-          <div className="left_session">
-            <div
+    <Box 
+      p={"100px 0"}
+      minH={"100vh"}
+      display={"grid"}
+      w={"100%"}
+      gridTemplateColumns={"1fr 55% 1fr"}
+      position={"relative"}
+      bg={`
+          radial-gradient(ellipse at top, #76afe4, transparent),
+          radial-gradient(ellipse at bottom, #77e7af, transparent),
+          radial-gradient(ellipse at left, #868fe5, transparent),
+          radial-gradient(ellipse at right, #d683d2, transparent)
+      `}
+    >
+    </Box>
+      <Box
+        position={"sticky"}
+        top={"50vh"}
+        
+      >
+        <div
+          style={{
+            marginTop: "1px",
+          }}
+        >
+          <img
+            style={{ marginTop: "-80px", marginLeft: "70px" }}
+            src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
+            alt=""
+          />
+          <h3>On Register You can</h3>
+          <div
+            style={{
+              display: "flex",
+              marginTop: "12px",
+            }}
+          >
+            <CheckCircleOutlineOutlinedIcon
+              style={{ color: "#18c1a3", marginTop: "12px" }}
+            />
+            <p
               style={{
-                marginTop: "1px",
+                color: "#445578",
+                lineHeight: "18px",
+                fontSize: "17px",
+                textAlign: "start",
+                marginLeft: "10px",
+                marginTop: "5%",
               }}
             >
-              <img
-                style={{ marginTop: "-80px", marginLeft: "70px" }}
-                src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
-                alt=""
-              />
-              <h3>On Register You can</h3>
-              <div
-                style={{
-                  display: "flex",
-                  marginTop: "12px",
-                }}
-              >
-                <CheckCircleOutlineOutlinedIcon
-                  style={{ color: "#18c1a3", marginTop: "12px" }}
-                />
-                <p
-                  style={{
-                    color: "#445578",
-                    lineHeight: "18px",
-                    fontSize: "17px",
-                    textAlign: "start",
-                    marginLeft: "10px",
-                    marginTop: "5%",
-                  }}
-                >
-                  Build your profile and let recruiters find you
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  marginTop: "13px",
-                }}
-              >
-                <CheckCircleOutlineOutlinedIcon
-                  style={{ color: "#18c1a3", marginTop: "10px" }}
-                />
-                <p
-                  style={{
-                    color: "#445578",
-                    lineHeight: "18px",
-                    fontSize: "17px",
-                    textAlign: "start",
-                    marginLeft: "10px",
-                    marginTop: "5%",
-                  }}
-                >
-                  Get job postings delivered right to your email
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  marginTop: "13px",
-                }}
-              >
-                <CheckCircleOutlineOutlinedIcon
-                  style={{ color: "#18c1a3", marginTop: "7px" }}
-                />
-                <p
-                  style={{
-                    color: "#445578",
-                    lineHeight: "18px",
-                    fontSize: "17px",
-                    textAlign: "start",
-                    marginLeft: "10px",
-                    marginTop: "5%",
-                  }}
-                >
-                  Find a job and grow your career as well
-                </p>
-              </div>
-            </div>
+              Build your profile and let recruiters find you
+            </p>
           </div>
-          <div className="form_data1">
-            <div className="form_heading">
-              <h2
-                style={{
-                  color: "#000000",
-                  fontSize: "30px",
-                  marginLeft: "-40%",
-                }}
-              >
-                Find a job & grow your career
-              </h2>
-            </div>
-            <form>
-              <div className="form_input_name">
-                <label htmlFor="name">Please Enter Full Name</label>
-                <input
-                  type="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  name="name"
-                  id="name"
-                  placeholder="Enter Your Name "
-                />
-              </div>
-              
-              <div className="form_input">
-                <label htmlFor="email">Email/username</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  name="email"
-                  id="Email"
-                  placeholder="Enter Your email here "
-                />
-                
-              </div>
-
-              <div className="form_input">
-                <label htmlFor="password">Password</label>
-                <div className="two">
-                  <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type={!passShow ? "password" : "text"}
-                    name="password"
-                    id="password1"
-                    placeholder="Enter Your password"
-                  />
-                  <div
-                    className="showpass1"
-                    onClick={() => setPassShow(!passShow)}
-                  >
-                    {!passShow ? "Show" : "Hide"}
-                  </div>
-                </div>
-               
-              </div>
-              <div className="form_input">
-                <label htmlFor="password1">Conform Password</label>
-                <div className="two">
-                  <input
-                    value={confirmpassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    type={!cpassShow ? "password" : "text"}
-                    name="cpassword"
-                    id="password"
-                    placeholder="Enter Your password"
-                  />
-                  <div
-                    className="showpass1"
-                    onClick={() => setCPassShow(!cpassShow)}
-                  >
-                    {!cpassShow ? "Show" : "Hide"}
-                  </div>
-                </div>
-               
-              </div>
-              <div className="form_input">
-                <label htmlFor="number">MobileNumber</label>
-                <input
-                  type="number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  name="phone"
-                  id="number"
-                  placeholder="Enter Your Mobile Number "
-                />
-              
-              </div>
-              <div className="experience">
-                <h3>Work</h3>
-                <div className="work_container">
-                  <CoPresentIcon
-                    style={{
-                      marginTop: "15px",
-                      marginLeft: "10px",
-                    }}
-                  />
-                  <h3
-                    style={{
-                      fontSize: "15px",
-                      color: "#457eff",
-                      marginLeft: "40px",
-                      marginTop: "-25px",
-                    }}
-                  >
-                    I'm Experienced
-                  </h3>
-                  <p style={{ color: "#8292b4", fontSize: "13px" }}>
-                    I have work experience (excluding internships)
-                  </p>
-                </div>
-                <div className="work_container">
-                  <BadgeIcon
-                    style={{
-                      marginTop: "15px",
-                      marginLeft: "10px",
-                    }}
-                  />
-                  <h3
-                    style={{
-                      fontSize: "15px",
-                      color: "#457eff",
-                      marginLeft: "40px",
-                      marginTop: "-25px",
-                    }}
-                  >
-                    I'm Fresher
-                  </h3>
-                  <p style={{ color: "#8292b4", fontSize: "13px" }}>
-                    I am a student/ Haven't worked after graduation
-                  </p>
-                </div>
-              </div>
-              <div>
-                <Form.Group className="mb-3">
-                  <Form.Label style={{ marginLeft: "-0.5%", fontSize: "20px" }}>
-                    Profile Picture{" "}
-                  </Form.Label>
-
-                  <Form.Control
-                    type="file"
-                    name="picture"
-                    style={{ width: "35%", size: "xl", marginTop: "10px" }}
-                    onChange={(e) => postDetails(e.target.files[0])}
-                    id="custom-file"
-                  />
-                
-                </Form.Group>
-              </div>
-              <div>
-                {/* <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} /> */}
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
-                <p
-                  style={{
-                    color: "#445578",
-                    fontSize: "14px",
-                    marginLeft: "20px",
-                    marginTop: "-4%",
-                  }}
-                >
-                  {" "}
-                  Send Important Information On WhatsApp
-                </p>
-              </div>
-              <p
-                style={{ color: "#445578", fontSize: "12px", marginTop: "2%" }}
-              >
-                By clicking Register, you agree to the Terms and Conditions &
-                Privacy Policy of JobPanda.com
-              </p>
-              <button onClick={handleSubmit} className="btn3">
-                Register Now
-              </button>
-            </form>
-            <ToastContainer />
+          <div
+            style={{
+              display: "flex",
+              marginTop: "13px",
+            }}
+          >
+            <CheckCircleOutlineOutlinedIcon
+              style={{ color: "#18c1a3", marginTop: "10px" }}
+            />
+            <p
+              style={{
+                color: "#445578",
+                lineHeight: "18px",
+                fontSize: "17px",
+                textAlign: "start",
+                marginLeft: "10px",
+                marginTop: "5%",
+              }}
+            >
+              Get job postings delivered right to your email
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginTop: "13px",
+            }}
+          >
+            <CheckCircleOutlineOutlinedIcon
+              style={{ color: "#18c1a3", marginTop: "7px" }}
+            />
+            <p
+              style={{
+                color: "#445578",
+                lineHeight: "18px",
+                fontSize: "17px",
+                textAlign: "start",
+                marginLeft: "10px",
+                marginTop: "5%",
+              }}
+            >
+              Find a job and grow your career as well
+            </p>
           </div>
         </div>
-      </session>
+      </Box>
+    <session>
+    <div className="main">
+      
+      <div className="form_data1">
+        <div className="form_heading">
+          <h2
+            style={{
+              color: "#000000",
+              fontSize: "30px",
+              marginLeft: "-40%",
+            }}
+          >
+            Find a job & grow your career
+          </h2>
+        </div>
+        <form>
+          <div className="form_input_name">
+            <label htmlFor="name">Please Enter Full Name</label>
+            <input
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              id="name"
+              placeholder="Enter Your Name "
+            />
+          </div>
+          
+          <div className="form_input">
+            <label htmlFor="email">Email/username</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              id="Email"
+              placeholder="Enter Your email here "
+            />
+            
+          </div>
+
+          <div className="form_input">
+            <label htmlFor="password">Password</label>
+            <div className="two">
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type={!passShow ? "password" : "text"}
+                name="password"
+                id="password1"
+                placeholder="Enter Your password"
+              />
+              <div
+                className="showpass1"
+                onClick={() => setPassShow(!passShow)}
+              >
+                {!passShow ? "Show" : "Hide"}
+              </div>
+            </div>
+           
+          </div>
+          <div className="form_input">
+            <label htmlFor="password1">Conform Password</label>
+            <div className="two">
+              <input
+                value={confirmpassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                type={!cpassShow ? "password" : "text"}
+                name="cpassword"
+                id="password"
+                placeholder="Enter Your password"
+              />
+              <div
+                className="showpass1"
+                onClick={() => setCPassShow(!cpassShow)}
+              >
+                {!cpassShow ? "Show" : "Hide"}
+              </div>
+            </div>
+           
+          </div>
+          <div className="form_input">
+            <label htmlFor="number">MobileNumber</label>
+            <input
+              type="number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              name="phone"
+              id="number"
+              placeholder="Enter Your Mobile Number "
+            />
+          
+          </div>
+          <div className="experience">
+            <h3>Work</h3>
+            <div className="work_container">
+              <CoPresentIcon
+                style={{
+                  marginTop: "15px",
+                  marginLeft: "10px",
+                }}
+              />
+              <h3
+                style={{
+                  fontSize: "15px",
+                  color: "#457eff",
+                  marginLeft: "40px",
+                  marginTop: "-25px",
+                }}
+              >
+                I'm Experienced
+              </h3>
+              <p style={{ color: "#8292b4", fontSize: "13px" }}>
+                I have work experience (excluding internships)
+              </p>
+            </div>
+            <div className="work_container">
+              <BadgeIcon
+                style={{
+                  marginTop: "15px",
+                  marginLeft: "10px",
+                }}
+              />
+              <h3
+                style={{
+                  fontSize: "15px",
+                  color: "#457eff",
+                  marginLeft: "40px",
+                  marginTop: "-25px",
+                }}
+              >
+                I'm Fresher
+              </h3>
+              <p style={{ color: "#8292b4", fontSize: "13px" }}>
+                I am a student/ Haven't worked after graduation
+              </p>
+            </div>
+          </div>
+          <div>
+            <Form.Group className="mb-3">
+              <Form.Label style={{ marginLeft: "-0.5%", fontSize: "20px" }}>
+                Profile Picture{" "}
+              </Form.Label>
+
+              <Form.Control
+                type="file"
+                name="picture"
+                style={{ width: "35%", size: "xl", marginTop: "10px" }}
+                onChange={(e) => postDetails(e.target.files[0])}
+                id="custom-file"
+              />
+            
+            </Form.Group>
+          </div>
+          <div>
+            {/* <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} /> */}
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
+            <p
+              style={{
+                color: "#445578",
+                fontSize: "14px",
+                marginLeft: "20px",
+                marginTop: "-4%",
+              }}
+            >
+              {" "}
+              Send Important Information On WhatsApp
+            </p>
+          </div>
+          <p
+            style={{ color: "#445578", fontSize: "12px", marginTop: "2%" }}
+          >
+            By clicking Register, you agree to the Terms and Conditions &
+            Privacy Policy of JobPanda.com
+          </p>
+          <button onClick={handleSubmit} className="btn3">
+            Register Now
+          </button>
+        </form>
+        <ToastContainer />
+      </div>
+    </div>
+  </session>
     </>
+    
   );
 };
 

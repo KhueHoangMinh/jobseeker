@@ -9,22 +9,24 @@ import JobPage from "../Components/Jobs/JobPage";
 import Login from "../Components/Login/Login";
 import ServicesPage from "../Components/Services/ServicesPage";
 import Signup from "../Components/Signup/Signup";
+import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
 
 const AllRoutes = () => {
   return (
     <Routes>
       {/* Don't Touch it Starts*/}
-      <Route path='/' element={<HomePage />} />
-      <Route path='/companies' element={<Companies />} />
-      <Route path='/companies/:id' element={<CompanyProfile />} />
-      <Route path='/create' element={<CreateCompany />} />
+      <Route path='/' element={<><Navbar trans={true}/><HomePage /><Footer/></>} />
+      <Route path='/companies' element={<><Navbar trans={false}/><Companies /><Footer/></>} />
+      <Route path='/companies/:id' element={<><Navbar trans={false}/><CompanyProfile /><Footer/></>} />
+      <Route path='/create' element={<><Navbar trans={true}/><CreateCompany /><Footer/></>} />
       {/* Don't Touch it Ends*/}
 
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup/>} />
-      <Route path='/jobpage' element={<JobPage />} />
-      <Route path='/jobpage/:jobId' element={<JobDetail />} />
-      <Route path='/services' element={<ServicesPage />} />
+      <Route path='/login' element={<><Navbar trans={false}/><Login /><Footer/></>} />
+      <Route path='/signup' element={<><Navbar trans={false}/><Signup/><Footer/></>} />
+      <Route path='/jobpage' element={<><Navbar trans={false}/><JobPage /><Footer/></>} />
+      <Route path='/jobpage/:jobId' element={<><Navbar trans={false}/><JobDetail /><Footer/></>} />
+      <Route path='/services' element={<><Navbar trans={false}/><ServicesPage /><Footer/></>} />
     </Routes>
   );
 };

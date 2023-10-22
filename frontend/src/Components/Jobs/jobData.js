@@ -11,7 +11,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"backend Developer",
-        skill:"Eclipse, IntelliJ, APM Tools Dynatrace, JVisual VM, JMH",
+        skill:["Eclipse", "IntelliJ", "APM Tools Dynatrace"," JVisual VM", "JMH"],
         location:"Pan India",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -29,7 +29,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:22,
 	    Role:"ETL/DataStage Developer",
-        skill:"Analyzer, SQL, UNIX/LINUX.",
+        skill:["Analyzer", "SQL", "UNIX/LINUX"],
         location:"Chennai/Hyderabad",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -47,7 +47,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:96,
 	    Role:"Software Development - Other",
-        skill:"Software Development",
+        skill:["Software Development"],
         location:"Maharashtra, India",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -65,7 +65,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"backend Developer",
-        skill:"Eclipse, IntelliJ, APM Tools Dynatrace, JVisual VM, JMH",
+        skill:["Eclipse", "IntelliJ", "APM Tools Dynatrace", "JVisual VM", "JMH"],
         location:"Pan India",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -85,7 +85,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"Java Full Stack Developer",
-        skill:"Java angular js javascript  mongoose react js",
+        skill:["Java", "angular", "js", "javascript",  "mongoose", "react", "js"],
         location:"Goa",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -102,7 +102,7 @@ export default [
         type:"Permanent remote / WFH",
         timetopost:"Few day Ago",
         blanksheet:10,
-        skill:"SAP Basis, SAP HANA and S/4 HANA skills,",
+        skill:["SAP Basis", "SAP HANA","S/4 HANA skills"],
         location:"delhi",
         industry:"HCL",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -120,7 +120,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"Full Stack  Developer",
-        skill:"html, css,javascript,React js,Redux,",
+        skill:["html", "css","javascript","React" ,"js","Redux"],
         location:"Rachhi",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -138,7 +138,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:10,
 	    Role:"ETL/DataStage Developer",
-        skill:"Analyzer, SQL, UNIX/LINUX.",
+        skill:["Analyzer", "SQL", "UNIX/LINUX"],
         location:"Hyderabad",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -156,7 +156,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:96,
 	    Role:"Software Development - Other",
-        skill:"Software Development",
+        skill:["Software Development"],
         location:"Maharashtra, India",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -174,7 +174,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"backend Developer",
-        skill:"Eclipse, IntelliJ, APM Tools Dynatrace, JVisual VM, JMH",
+        skill:["Eclipse", "IntelliJ", "APM Tools Dynatrace", "JVisual VM", "JMH"],
         location:"Pan India",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -194,7 +194,7 @@ export default [
         timetopost:"Few Hours Ago",
         blanksheet:15,
         Role:"Java Full Stack Developer",
-        skill:"Java angular js javascript  mongoose react js",
+        skill:["Java", "angular", "js", "javascript",  "mongoose", "react", "js"],
         location:"Goa",
         industry:"IT Services & Consulting",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "
@@ -211,7 +211,7 @@ export default [
         type:"Permanent remote / WFH",
         timetopost:"Few day Ago",
         blanksheet:10,
-        skill:"SAP Basis, SAP HANA and S/4 HANA skills,",
+        skill:["SAP Basis", "SAP HANA and S/4 HANA skills"],
         location:"delhi",
         industry:"Airtal",
         dis:"To perform function related data entry of student and teacher in excel and word ||     Basic knowledge of English and Hindi || Know basic software for image and video editing || Good command over of Ms excel || Social media handling "

@@ -37,14 +37,12 @@ const Navbar = (props) => {
       } else {
         if(navBg) setNavBg(false);
       }
-    }
+    } else if (!navBg) setNavBg(true);
   })
 
   useEffect(()=>{
-    if(!props.trans) {
-      setNavBg(true);
-    }
-  },[])
+      setNavBg(!props.trans);
+  },[props.trans])
 
   return (
     <Box

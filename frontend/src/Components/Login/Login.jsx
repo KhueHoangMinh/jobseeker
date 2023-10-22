@@ -80,7 +80,7 @@ const Login = () => {
       minH={"100vh"}
       display={"flex"}
       alignItems={"center"}
-      justifyContent={"center"}
+      justifyContent={"end"}
       position={"relative"}
       bg={`
           radial-gradient(ellipse at top, #76afe4, transparent),
@@ -90,11 +90,12 @@ const Login = () => {
       `}
     >
       <Image
-        opacity={"30%"}
         src="https://static.naukimg.com/s/5/105/i/register.png"
         alt=""
         position={"absolute"}
-        w={"80%"}
+        w={"40%"}
+        left={"0"}
+        bottom={"0"}
         zIndex={1}
       />
       <Box
