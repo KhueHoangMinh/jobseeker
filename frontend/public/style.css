@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+
+html {
+    font-family: "Varela Round", sans-serif !important;
+    scroll-behavior: smooth;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'M PLUS Rounded 1c', sans-serif !important;
+    letter-spacing: 1px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 20px;
+}
+  
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
