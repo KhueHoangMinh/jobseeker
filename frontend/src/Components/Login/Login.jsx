@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Box, Button, Center, Container, Divider, Flex, FormControl, FormLabel, Heading, Image, Input, Select, Text, keyframes,usePrefersReducedMotion } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../redux/userReducer/userSlice";
 import { Link } from "react-router-dom";
 import DoneIcon from "@mui/icons-material/Done";
-import axios from "axios";
+import Axios from "axios";
 
 // import "./Both.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
+  const dispatch = useDispatch();
   const [passShow, setPassShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,58 +21,26 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (email === "") {
-      toast.error("email is required!", {
-        position: "top-center",
-      });
-    } else if (!email.includes("@")) {
-      toast.warning("includes @ in your email!", {
-        position: "top-center",
-      });
-    } else if (password === "") {
-      toast.error("password is required!", {
-        position: "top-center",
-      });
-    } else if (password.length < 6) {
-      toast.error("password must be 6 char!", {
-        position: "top-center",
-      });
-    } else {
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-        setLoading(true);
-
-        const { data } = await axios.post(
-          "https://rich-puce-peacock-kilt.cyclic.app/api/users/login",
-          {
-            email,
-            password,
-          },
-          config
-        );
-        console.log(data);
-        localStorage.setItem("userInfo", JSON.stringify(data));
-        console.log("user login succesfully done");
-        toast.success("User Login Successfuly", {
-          position: "top-center",
-        });
-        navigate("/mainhome");
-
-        setLoading(false);
-      } catch (error) {
-        setError(error.response.data.message);
-        const FError = error.response.data.message;
-        console.log(FError);
-        toast.error(FError, {
-          position: "top-center",
-        });
-        setLoading(false);
+    Axios.post('/api/signin', {email: email, password: password})
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data.length == 1) {
+        const userData = {
+          userId: res.data[0].userId,
+          firstName: res.data[0].firstName,
+          lastName: res.data[0].lastName,
+          displayName: res.data[0].displayName,
+          dob: res.data[0].dob,
+          gender: res.data[0].gender,
+          email: email,
+          image: res.data[0].image
+        }
+        dispatch(authActions.login(userData))
+        navigate("/")
+      } else {
+        console.log("error");
       }
-    }
+    })
   }
 
   return (

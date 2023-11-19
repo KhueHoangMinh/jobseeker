@@ -20,6 +20,7 @@ import {
 import mainlogo from "../../Components/req/jobpandacom-logo.png";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,8 +28,9 @@ const Navbar = (props) => {
   const jobs = useDisclosure();
   const companies = useDisclosure();
   const services = useDisclosure();
-  const [navBg,setNavBg] = useState(false);
+  const [navBg,setNavBg] = useState(true);
   const navigate = useNavigate();
+  const user = useSelector(state => state.auth.user);
 
   window.addEventListener("scroll", () => {
     if(props.trans) {
@@ -41,8 +43,64 @@ const Navbar = (props) => {
   })
 
   useEffect(()=>{
-      setNavBg(!props.trans);
+    setNavBg(!props.trans);
   },[props.trans])
+
+  const MenuBox = () => {
+    <Box
+      h={"100%"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      fontWeight={"500"}
+      lineHeight={"20px"}
+      color={"#445578"}
+      cursor={"pointer"}
+    ></Box>
+  }
+
+  const MenuButtonNew = (props) => (
+    <MenuButton
+      _hover={{
+        background: "none",
+        border: "none",
+        textDecoration: "none",
+      }}
+      border={"none"}
+      bgColor={"transparent"}
+      as={Button}
+      color={"black"}
+      padding={"0 10px"}
+      onMouseEnter={props.disclosure.onOpen} 
+      onMouseLeave={props.disclosure.onClose}
+      onClick={()=>navigate(props.dest)}
+    >
+      {props.text}
+    </MenuButton>
+  )
+
+  const MenuMainItem = (props) => (
+    <MenuItem
+      fontWeight={"600"}
+      fontSize={"17px"}
+      color={"#1b2437"}
+      cursor={"default"}
+    >
+      {props.text}
+    </MenuItem>
+  )
+
+  const MenuSubItem = (props) => (
+    <MenuItem
+      _hover={{
+        color: "#457eff",
+      }}
+      fontWeight={"500"}
+      color={"#445578"}
+    >
+      {props.text}
+    </MenuItem>
+  )
 
   return (
     <Box
@@ -73,8 +131,6 @@ const Navbar = (props) => {
           justifyContent={"start"}
         >
           <Box
-            // border={"1px"}
-            // borderColor={"blue"}
             h={"100%"}
             display={"flex"}
             alignItems={"center"}
@@ -85,96 +141,28 @@ const Navbar = (props) => {
             cursor={"pointer"}
           >
             <Menu isOpen={jobs.isOpen}>
-              <MenuButton
-                _hover={{
-                  background: "none",
-                  border: "none",
-                  textDecoration: "none",
-                }}
-                border={"none"}
-                bgColor={"transparent"}
+              <MenuButtonNew
                 as={Button}
-                color={"black"}
-                padding={"0 10px"}
-                onMouseEnter={jobs.onOpen} 
-                onMouseLeave={jobs.onClose}
-                onClick={()=>navigate("/jobpage")}
-              >
-                Jobs
-              </MenuButton>
+                disclosure={jobs}
+                dest="/jobpage"
+                text="Jobs"
+              />
               <MenuList 
                 boxShadow={"3px 3px 25px rgba(0,0,0,0.3)"}
                 onMouseEnter={jobs.onOpen} 
                 onMouseLeave={jobs.onClose}
               >
-                <MenuItem
-                  fontWeight={"600"}
-                  fontSize={"17px"}
-                  color={"#1b2437"}
-                  cursor={"default"}
-                >
-                  Popular Categories
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  IT jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Sales jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Marketing jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Data Science jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  HR jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Engineering jobs
-                </MenuItem>
+                <MenuMainItem text = "Popular Categories"/>
+                <MenuSubItem text = "IT jobs"/>
+                <MenuSubItem text = "Sales jobs"/>
+                <MenuSubItem text = "Marketing jobs"/>
+                <MenuSubItem text = "Data Science "/>
+                <MenuSubItem text = "HR jobs"/>
+                <MenuSubItem text = "Engineering "/>
               </MenuList>
             </Menu>
           </Box>
           <Box
-            // border={"1px"}
-            // borderColor={"blue"}
             h={"100%"}
             display={"flex"}
             alignItems={"center"}
@@ -185,80 +173,23 @@ const Navbar = (props) => {
             cursor={"pointer"}
           >
             <Menu isOpen={companies.isOpen}>
-              <MenuButton
-                onClick={() => navigate("/companies")}
-                _hover={{
-                  background: "white",
-                  border: "none",
-                }}
-                padding={"0 10px"}
-                border={"none"}
-                bgColor={"transparent"}
+              <MenuButtonNew
                 as={Button}
-                onMouseEnter={companies.onOpen}
-                onMouseLeave={companies.onClose}
-                color={"black"}
-              >
-                Companies
-              </MenuButton>
+                disclosure={companies}
+                dest="/companies"
+                text="Companies"
+              />
               <MenuList
                 boxShadow={"3px 3px 25px rgba(0,0,0,0.3)"}
                 onMouseEnter={companies.onOpen}
                 onMouseLeave={companies.onClose}
               >
-                <MenuItem
-                  fontWeight={"600"}
-                  fontSize={"17px"}
-                  color={"#1b2437"}
-                  cursor={"default"}
-                >
-                  Explore Categories
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Unicorn
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  MNC
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Startup
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Product Based
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Internet
-                </MenuItem>
+                <MenuMainItem text = "Explore Categories"/>
+                <MenuSubItem text = "Unicorn"/>
+                <MenuSubItem text = "MNC"/>
+                <MenuSubItem text = "Startup"/>
+                <MenuSubItem text = "Product Based"/>
+                <MenuSubItem text = "Internet"/>
               </MenuList>
             </Menu>
           </Box>
@@ -273,98 +204,25 @@ const Navbar = (props) => {
             cursor={"pointer"}
           >
             <Menu isOpen={services.isOpen}>
-              <MenuButton
-                _hover={{
-                  background: "white",
-                  border: "none",
-                }}
-                padding={"0 10px"}
-                border={"none"}
-                bgColor={"transparent"}
+              
+              <MenuButtonNew
                 as={Button}
-                color={"black"}
-                onMouseEnter={services.onOpen}
-                onMouseLeave={services.onClose}
-                onClick={()=>navigate("/services")}
-              >
-                Services
-              </MenuButton>
+                disclosure={services}
+                dest="/services"
+                text="Courses"
+              />
               <MenuList
                 boxShadow={"3px 3px 25px rgba(0,0,0,0.3)"}
                 onMouseEnter={services.onOpen}
                 onMouseLeave={services.onClose}
               >
-                <MenuItem
-                  fontWeight={"600"}
-                  fontSize={"17px"}
-                  color={"#1b2437"}
-                  cursor={"default"}
-                >
-                  Resume Writing
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Visual Resume
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Resume critique
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Text Resume
-                </MenuItem>
-                <br />
-                <MenuItem
-                  fontWeight={"600"}
-                  fontSize={"17px"}
-                  color={"#1b2437"}
-                  cursor={"default"}
-                >
-                  Find Jobs
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Jobs4u
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Priority applicant
-                </MenuItem>
-                <MenuItem
-                  _hover={{
-                    color: "#457eff",
-                  }}
-                  fontWeight={"500"}
-                  color={"#445578"}
-                >
-                  Contact us
-                </MenuItem>
+                <MenuMainItem text = "Explore course"/>
+                <MenuSubItem text = "IT"/>
+                <MenuSubItem text = "Sales"/>
+                <MenuSubItem text = "Marketing"/>
+                <MenuSubItem text = "Data Science"/>
+                <MenuSubItem text = "HR"/>
+                <MenuSubItem text = "Engineering"/>
               </MenuList>
             </Menu>
           </Box>
@@ -395,81 +253,70 @@ const Navbar = (props) => {
           alignItems={"center"}
           justifyContent={"end"}
         >
-          <Button
-            border={"1px"}
-            borderColor={"#004cff"}
-            borderRadius={"50px"}
-            color={"#004cff"}
-            bg={"transparent"}
-            h={"40px"}
-            w={"80px"}
-            fontWeight={"600"}
-            onClick={()=>navigate("/login")}
-          >
-            Login
-          </Button>
-          <Button
-            _hover={{
-              color: "#004cff",
-              bgColor: "white"
-            }}
-            border={"none"}
-            borderRadius={"50px"}
-            color={"white"}
-            bgColor={"#004cff"}
-            w={"100px"}
-            onClick={()=>navigate("/signup")}
-          >
+          {
+            user?
+            <>
+              <Text
+                mr={"5px"}
+                fontWeight={"600"}
+              >
+                {user.displayName}
+              </Text>
+              <Image
+                src={user.image}
+                alt=""
+                h={"40px"}
+                w={"40px"}
+                border={"2px solid rgba(0,0,0,0.3)"}
+                borderRadius={"50%"}
+              />
+            </> :
+            <>
+              <Button
+                border={"1px"}
+                borderColor={"#004cff"}
+                borderRadius={"50px"}
+                color={"#004cff"}
+                bg={"transparent"}
+                h={"40px"}
+                w={"80px"}
+                fontWeight={"600"}
+                onClick={()=>navigate("/login")}
+              >
+                Login
+              </Button>
+              <Button
+                _hover={{
+                  color: "#004cff",
+                  bgColor: "white"
+                }}
+                border={"none"}
+                borderRadius={"50px"}
+                color={"white"}
+                bgColor={"#004cff"}
+                w={"100px"}
+                onClick={()=>navigate("/signup")}
+              >
             Register
           </Button>
+            </>
+          }
+          
           <Divider borderColor={"#445578"} orientation="vertical" h={"30%"} />
           <Menu isOpen={employers.isOpen}>
-            <MenuButton
-              _hover={{
-                background: "white",
-                border: "none",
-              }}
-              border={"none"}
-              bgColor={"transparent"}
-              as={Button}
-              rightIcon={<ChevronDownIcon />}
-              onMouseEnter={employers.onOpen}
-              onMouseLeave={employers.onClose}
-              color={"black"}
-            >
-              For employers
-            </MenuButton>
+            
+              <MenuButtonNew
+                as={Button}
+                disclosure={employers}
+                dest="/employer"
+                text="For employers"
+              />
             <MenuList
               onMouseEnter={employers.onOpen}
               onMouseLeave={employers.onClose}
             >
-              <MenuItem
-                _hover={{
-                  color: "#457eff",
-                }}
-                fontWeight={"500"}
-                color={"#445578"}
-              >
-                Buy online
-              </MenuItem>
-              <MenuItem
-                _hover={{
-                  color: "#457eff",
-                }}
-                fontWeight={"500"}
-                color={"#445578"}
-              >
-                Hiring solutions
-              </MenuItem>
-              <MenuItem
-                _hover={{
-                  color: "#457eff",
-                }}
-                fontWeight={"500"}
-                color={"#445578"}
-              >
-                Employer Login
-              </MenuItem>
+              <MenuSubItem text = "Hiring solutions"/>
+              <MenuSubItem text = "Employer Login"/>
             </MenuList>
           </Menu>
         </Stack>

@@ -1,49 +1,92 @@
 import { Box, Button, Flex, Heading, Input, Select, Text, Image, Container } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsBag } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import { BsFillStarFill} from 'react-icons/bs';
 
 import jobData from "./jobData";
-
-const jobdatas = jobData.map(job => {
-  return (
-    
-      <Box key={job.id} mt='20px'  boxShadow= '3px 3px 20px rgba(0,0,0,0.4)'  mb='20px' p='20px' borderRadius={"10px"} >
-        <Link color={"#004cff"} to={`/jobpage/${job.id}`}><Text fontSize='20px'><strong>{job.title}</strong></Text></Link>
-        <h3>{job.subtitle}</h3>
-        <Flex >
-          <Box display='flex'  mr='20px'>
-          <BsBag />
-          <h2> {job.exp} years</h2>
-          </Box>
-          <Box  mr='20px' color='blue.400'>   ₹ Not closed</Box>
-          <Box display='flex'  mr='20px'>
-            <Box mt='2px' color='blue'> <CiLocationOn /></Box>
-          
-          <h2> {job.location}</h2>
-          </Box>
-        </Flex>
-        <Box>{job.skill.map(skill => {
-          return (
-            <Text _hover={{bgColor: "#487df8", cursor: "pointer"}} transition={"0.2s ease-in-out"} display={"inline-block"} bgColor={"#1459f8"} color={"white"} borderRadius={"12px"} mr={"5px"} p={"3px 8px"} fontSize={"12px"} fontWeight={"600"}>
-              {skill}
-            </Text>
-          )
-        })}</Box>
-      
-      </Box> 
-  );
-});
+import Axios from "axios";
 
 const JobPage = () => {
+  
+  const [jobs,setJobs] = useState();
+
+  useEffect(()=>{
+    Axios.post('/api/getjob', {})
+    .then((res) => {
+      console.log(res)
+      setJobs(res.data);
+    })
+  },[]) 
+
+  useEffect(()=>{
+      console.log(jobs);
+  },[jobs]) 
+
+  
+  const jobdatas = () => jobs?.map(job => {
+    return (
+      
+        <Box key={job.id} mt='20px'  boxShadow= '3px 3px 20px rgba(0,0,0,0.4)'  mb='20px' p='20px' borderRadius={"10px"} >
+          <Link color={"#004cff"} to={`/jobpage/${job.jobId}`}><Text fontSize='20px'><strong>{job.jobName}</strong></Text></Link>
+          <h3>{job.conpanyName}</h3>
+          <Flex >
+            <Box display='flex'  mr='20px'>
+              <h2> ${job.salary}</h2>
+            </Box>
+            <Box  mr='20px' color='blue.400'>{job.expReq}</Box>
+            <Box display='flex'  mr='20px'>
+              <Box mt='2px' color='blue'> <CiLocationOn /></Box>
+            
+            <h2> {job.cityName}/ {job.countryName}</h2>
+            </Box>
+          </Flex>
+          {/* <Box>{job.req.map(skill => {
+            return (
+              <Text _hover={{bgColor: "#487df8", cursor: "pointer"}} transition={"0.2s ease-in-out"} display={"inline-block"} bgColor={"#1459f8"} color={"white"} borderRadius={"12px"} mr={"5px"} p={"3px 8px"} fontSize={"12px"} fontWeight={"600"}>
+                {skill.skillTitle}
+              </Text>
+            )
+          })}</Box> */}
+        
+        </Box> 
+    );
+  });
+
   return (
     <Box p={"100px 10%"}>
       <Box display='grid' gap={"20px"} gridTemplateColumns={"65% 30%"} position={"relative"}>
         <Box>
           <Heading size={"2xl"} color={"#004cff"} fontWeight='bold' fontSize='20px'>{jobData.length} Jobs Based on your interest</Heading>
-          {jobdatas}
+          {jobs?.map(job => {
+            return (
+              
+                <Box key={job.id} mt='20px'  boxShadow= '3px 3px 20px rgba(0,0,0,0.4)'  mb='20px' p='20px' borderRadius={"10px"} >
+                  <Link color={"#004cff"} to={`/jobpage/${job.jobId}`}><Text fontSize='20px'><strong>{job.jobName}</strong></Text></Link>
+                  <h3>{job.conpanyName}</h3>
+                  <Flex >
+                    <Box display='flex'  mr='20px'>
+                      <h2> ${job.salary}</h2>
+                    </Box>
+                    <Box  mr='20px' color='blue.400'>{job.expReq}</Box>
+                    <Box display='flex'  mr='20px'>
+                      <Box mt='2px' color='blue'> <CiLocationOn /></Box>
+                    
+                    <h2> {job.cityName}/ {job.countryName}</h2>
+                    </Box>
+                  </Flex>
+                  {/* <Box>{job.req.map(skill => {
+                    return (
+                      <Text _hover={{bgColor: "#487df8", cursor: "pointer"}} transition={"0.2s ease-in-out"} display={"inline-block"} bgColor={"#1459f8"} color={"white"} borderRadius={"12px"} mr={"5px"} p={"3px 8px"} fontSize={"12px"} fontWeight={"600"}>
+                        {skill.skillTitle}
+                      </Text>
+                    )
+                  })}</Box> */}
+                
+                </Box> 
+            );
+          })}
         </Box>
         <Box position={"sticky"} top={"-10%"} h={"fit-content"}>
           <Heading size={"2xl"} color={"#004cff"} fontWeight='bold' fontSize='20px'> Search</Heading>

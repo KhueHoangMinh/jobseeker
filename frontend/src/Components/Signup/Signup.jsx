@@ -10,7 +10,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import "./Both.css";
-import { Box, Button, Flex, Heading, Input, Select, Text, Image, Container } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Select, Text, Image, Container, FormControl, FormLabel, Divider } from "@chakra-ui/react";
 const Signup = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
@@ -139,6 +139,7 @@ const Signup = () => {
       display={"grid"}
       w={"100%"}
       gridTemplateColumns={"1fr 55% 1fr"}
+      gap={"20px"}
       position={"relative"}
       bg={`
           radial-gradient(ellipse at top, #76afe4, transparent),
@@ -147,33 +148,33 @@ const Signup = () => {
           radial-gradient(ellipse at right, #d683d2, transparent)
       `}
     >
-    </Box>
       <Box
         position={"sticky"}
-        top={"50vh"}
-        
+        top={"40vh"}
+        h={"fit-content"}
+        m={"10px"}
+        p={"10px"}
+        bgColor={"white"}
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"center"}
+        borderRadius={"10px"}
+        boxShadow={"3px 3px 20px rgba(0,0,0,0.3)"}
       >
-        <div
-          style={{
-            marginTop: "1px",
-          }}
-        >
-          <img
-            style={{ marginTop: "-80px", marginLeft: "70px" }}
-            src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
-            alt=""
-          />
-          <h3>On Register You can</h3>
-          <div
-            style={{
-              display: "flex",
-              marginTop: "12px",
-            }}
-          >
+        <Image
+          h={"140px"}
+          mt={"-70px"}
+          mb={"10px"}
+          src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg"
+          alt=""
+        />
+        <Heading size={"1xl"} w={"fit-content"}>On Register You can</Heading>
+        <Box>
+          <Flex>
             <CheckCircleOutlineOutlinedIcon
               style={{ color: "#18c1a3", marginTop: "12px" }}
             />
-            <p
+            <Text
               style={{
                 color: "#445578",
                 lineHeight: "18px",
@@ -184,18 +185,30 @@ const Signup = () => {
               }}
             >
               Build your profile and let recruiters find you
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              marginTop: "13px",
-            }}
-          >
+            </Text>
+          </Flex>
+          <Flex>
             <CheckCircleOutlineOutlinedIcon
-              style={{ color: "#18c1a3", marginTop: "10px" }}
+              style={{ color: "#18c1a3", marginTop: "12px" }}
             />
-            <p
+            <Text
+              style={{
+                color: "#445578",
+                lineHeight: "18px",
+                fontSize: "17px",
+                textAlign: "start",
+                marginLeft: "10px",
+                marginTop: "5%",
+              }}
+            >
+              Build your profile and let recruiters find you
+            </Text>
+          </Flex>
+          <Flex>
+            <CheckCircleOutlineOutlinedIcon
+              style={{ color: "#18c1a3", marginTop: "12px" }}
+            />
+            <Text
               style={{
                 color: "#445578",
                 lineHeight: "18px",
@@ -206,215 +219,182 @@ const Signup = () => {
               }}
             >
               Get job postings delivered right to your email
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              marginTop: "13px",
-            }}
-          >
-            <CheckCircleOutlineOutlinedIcon
-              style={{ color: "#18c1a3", marginTop: "7px" }}
-            />
-            <p
-              style={{
-                color: "#445578",
-                lineHeight: "18px",
-                fontSize: "17px",
-                textAlign: "start",
-                marginLeft: "10px",
-                marginTop: "5%",
-              }}
-            >
-              Find a job and grow your career as well
-            </p>
-          </div>
-        </div>
+            </Text>
+          </Flex>
+        </Box>
       </Box>
-    <session>
-    <div className="main">
-      
-      <div className="form_data1">
-        <div className="form_heading">
-          <h2
-            style={{
-              color: "#000000",
-              fontSize: "30px",
-              marginLeft: "-40%",
-            }}
-          >
+      <Box
+      position={"relative"}
+        h={"fit-content"}
+        m={"10px"}
+        p={"20px"}
+        bgColor={"white"}
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"center"}
+        borderRadius={"10px"}
+        boxShadow={"3px 3px 20px rgba(0,0,0,0.3)"}
+      >
+        <Heading size={"2xl"} mb={"20px"}>
             Find a job & grow your career
-          </h2>
-        </div>
-        <form>
-          <div className="form_input_name">
-            <label htmlFor="name">Please Enter Full Name</label>
-            <input
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              name="name"
-              id="name"
-              placeholder="Enter Your Name "
-            />
-          </div>
-          
-          <div className="form_input">
-            <label htmlFor="email">Email/username</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              name="email"
-              id="Email"
-              placeholder="Enter Your email here "
-            />
-            
-          </div>
-
-          <div className="form_input">
-            <label htmlFor="password">Password</label>
-            <div className="two">
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type={!passShow ? "password" : "text"}
-                name="password"
-                id="password1"
-                placeholder="Enter Your password"
+        </Heading>
+        <Button 
+          w={"100%"}
+          border={"1px solid rgba(0,0,0,0.2)"}
+        >
+          <Image
+            height = {"22px"}
+            mr={"10px"}
+            src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
+            alt=""
+          />
+          Register With Google
+        </Button>
+        <Flex
+          alignItems={"center"}
+          m={"20px 0"}
+          w={"100%"}
+        >
+          <Divider
+            borderColor={"rgba(0,0,0,0.5)"}
+            m={"0 10px"}
+          />
+          <Text fontWeight={"600"}>Or</Text>
+          <Divider
+            borderColor={"rgba(0,0,0,0.5)"}
+            m={"0 10px"}
+          />
+        </Flex>
+        <form 
+          onSubmit={(e) => handleSubmit(e)}
+          style={{
+            width: '100%'
+          }}
+        >
+          <FormControl>
+              <FormLabel>Please Enter Full Name</FormLabel>
+              <Input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                name="name"
+                id="name"
+                placeholder="Enter Your Name"
+                borderColor={"rgba(0,0,0,0.3)"}
+                mb={"10px"}
               />
-              <div
-                className="showpass1"
-                onClick={() => setPassShow(!passShow)}
-              >
-                {!passShow ? "Show" : "Hide"}
-              </div>
-            </div>
-           
-          </div>
-          <div className="form_input">
-            <label htmlFor="password1">Conform Password</label>
-            <div className="two">
-              <input
-                value={confirmpassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                type={!cpassShow ? "password" : "text"}
-                name="cpassword"
-                id="password"
-                placeholder="Enter Your password"
+              <FormLabel>Email/username</FormLabel>
+              <Input 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                id="Email"
+                placeholder="Enter Your email here "
+                borderColor={"rgba(0,0,0,0.3)"}
+                mb={"10px"}
               />
-              <div
-                className="showpass1"
-                onClick={() => setCPassShow(!cpassShow)}
-              >
-                {!cpassShow ? "Show" : "Hide"}
-              </div>
-            </div>
-           
-          </div>
-          <div className="form_input">
-            <label htmlFor="number">MobileNumber</label>
-            <input
-              type="number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              name="phone"
-              id="number"
-              placeholder="Enter Your Mobile Number "
-            />
-          
-          </div>
-          <div className="experience">
-            <h3>Work</h3>
-            <div className="work_container">
-              <CoPresentIcon
-                style={{
-                  marginTop: "15px",
-                  marginLeft: "10px",
+              <Flex
+                  flexDirection={"column"}
+                  mb={"10px"}
+                > 
+                <Flex
+                  h={"fit-content"}
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                >
+                  <FormLabel>Password</FormLabel>
+                  <Button
+                    _hover={{
+                      color: "#004cff"
+                    }}
+                    onClick={() => setPassShow(!passShow)}
+                    p={0}
+                    m={0}
+                    mb={"8px"}
+                    bg="none"
+                    h={"fit-content"}
+                  >
+                    {!passShow ? "Show" : "Hide"}
+                  </Button>
+                </Flex>
+                <Box>
+                  <Input
+                    borderColor={"rgba(0,0,0,0.3)"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type={!passShow ? "password" : "text"}
+                    name="password"
+                    id="password1"
+                    placeholder="Enter Your password"
+                  />
+                </Box>
+              </Flex>
+              <Flex
+                  flexDirection={"column"}
+                  mb={"10px"}
+                > 
+                <Flex
+                  h={"fit-content"}
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                >
+                  <FormLabel>Confirm Password</FormLabel>
+                  <Button
+                    _hover={{
+                      color: "#004cff"
+                    }}
+                    onClick={() => setCPassShow(!cpassShow)}
+                    p={0}
+                    m={0}
+                    mb={"8px"}
+                    bg="none"
+                    h={"fit-content"}
+                  >
+                    {!cpassShow ? "Show" : "Hide"}
+                  </Button>
+                </Flex>
+                <Box>
+                  <Input
+                    borderColor={"rgba(0,0,0,0.3)"}
+                    value={confirmpassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    type={!cpassShow ? "password" : "text"}
+                    name="cpassword"
+                    id="password"
+                    placeholder="Enter Your password"
+                  />
+                </Box>
+              </Flex>
+              <FormLabel>Phone</FormLabel>
+              <Input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                name="phone"
+                id="number"
+                placeholder="Enter Your Mobile Number "
+                borderColor={"rgba(0,0,0,0.3)"}
+                mb={"10px"}
+              />
+              <Button 
+                _hover ={{
+                  color: "black",
+                  bgColor: "white"
                 }}
-              />
-              <h3
-                style={{
-                  fontSize: "15px",
-                  color: "#457eff",
-                  marginLeft: "40px",
-                  marginTop: "-25px",
-                }}
+                mt={"20px"}
+                bgColor={"#004cff"}
+                color={"white"}
+                w={"100%"}
+                type="submit"
               >
-                I'm Experienced
-              </h3>
-              <p style={{ color: "#8292b4", fontSize: "13px" }}>
-                I have work experience (excluding internships)
-              </p>
-            </div>
-            <div className="work_container">
-              <BadgeIcon
-                style={{
-                  marginTop: "15px",
-                  marginLeft: "10px",
-                }}
-              />
-              <h3
-                style={{
-                  fontSize: "15px",
-                  color: "#457eff",
-                  marginLeft: "40px",
-                  marginTop: "-25px",
-                }}
-              >
-                I'm Fresher
-              </h3>
-              <p style={{ color: "#8292b4", fontSize: "13px" }}>
-                I am a student/ Haven't worked after graduation
-              </p>
-            </div>
-          </div>
-          <div>
-            <Form.Group className="mb-3">
-              <Form.Label style={{ marginLeft: "-0.5%", fontSize: "20px" }}>
-                Profile Picture{" "}
-              </Form.Label>
-
-              <Form.Control
-                type="file"
-                name="picture"
-                style={{ width: "35%", size: "xl", marginTop: "10px" }}
-                onChange={(e) => postDetails(e.target.files[0])}
-                id="custom-file"
-              />
-            
-            </Form.Group>
-          </div>
-          <div>
-            {/* <Checkbox style={{ marginLeft: "-2%", marginTop: "2%" }} /> */}
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
-            <p
-              style={{
-                color: "#445578",
-                fontSize: "14px",
-                marginLeft: "20px",
-                marginTop: "-4%",
-              }}
-            >
-              {" "}
-              Send Important Information On WhatsApp
-            </p>
-          </div>
-          <p
-            style={{ color: "#445578", fontSize: "12px", marginTop: "2%" }}
-          >
-            By clicking Register, you agree to the Terms and Conditions &
-            Privacy Policy of JobPanda.com
-          </p>
-          <button onClick={handleSubmit} className="btn3">
-            Register Now
-          </button>
+                Register
+              </Button>
+          </FormControl>
         </form>
-        <ToastContainer />
-      </div>
-    </div>
-  </session>
+      </Box>
+    </Box>
+    <ToastContainer />
     </>
     
   );
