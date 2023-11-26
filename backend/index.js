@@ -33,11 +33,16 @@ app.post('/api/signup', async (req, res) => {
       INSERT INTO users (firstName, lastName, dob, gender, displayName, password, email)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
-    const [result] = await connection.query(sql, [firstName, lastName, dob, gender, displayName, password, email]);
-    res.status(200).send(result);
+    connection.query(sql, [firstName, lastName, dob, gender, displayName, password, email], (err,result) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.send(result)
+      }
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'An error occurred' });
+    res.status(500).send("error")
   }
 });
 
